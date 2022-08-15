@@ -40,7 +40,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[27.09939334960051,-83.15470540057065],[28.299433134153702,-81.39844064666362]]);
+        }).fitBounds([[24.075968045092925,-88.58846821796378],[31.21103345519568,-79.69613745796163]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -61,7 +61,7 @@
         function setBounds() {
         }
         map.createPane('pane_Satelite_0');
-        map.getPane('pane_Satelite_0').style.zIndex = 400;
+        map.getPane('pane_Satelite_0').style.zIndex = 100;
         var layer_Satelite_0 = L.tileLayer('https://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}', {
             pane: 'pane_Satelite_0',
             opacity: 1.0,
@@ -94,8 +94,8 @@
                         <td>' + (feature.properties['25k - 50k sf'] !== null ? autolinker.link(feature.properties['25k - 50k sf'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">> 50k sf</th>\
-                        <td>' + (feature.properties['> 50k sf'] !== null ? autolinker.link(feature.properties['> 50k sf'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">>50k sf</th>\
+                        <td>' + (feature.properties['>50k sf'] !== null ? autolinker.link(feature.properties['>50k sf'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -105,19 +105,19 @@
             return {
                 pane: 'pane_RoofSurveyPricing_1',
                 opacity: 1,
-                color: 'rgba(35,35,35,0.001)',
+                color: 'rgba(35,35,35,0.002)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(196,60,57,0.001)',
+                fillColor: 'rgba(145,82,45,1.568627450980392e-05)',
                 interactive: true,
             }
         }
         map.createPane('pane_RoofSurveyPricing_1');
-        map.getPane('pane_RoofSurveyPricing_1').style.zIndex = 401;
+        map.getPane('pane_RoofSurveyPricing_1').style.zIndex = 101;
         map.getPane('pane_RoofSurveyPricing_1').style['mix-blend-mode'] = 'normal';
         var layer_RoofSurveyPricing_1 = new L.geoJson(json_RoofSurveyPricing_1, {
             attribution: '',
@@ -136,7 +136,8 @@
                         <td colspan="2"><strong>Strato Drone Solutions</strong><br />' + (feature.properties['Strato Drone Solutions'] !== null ? autolinker.link(feature.properties['Strato Drone Solutions'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Geo Zone'] !== null ? autolinker.link(feature.properties['Geo Zone'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Geo Zone</th>\
+                        <td>' + (feature.properties['Geo Zone'] !== null ? autolinker.link(feature.properties['Geo Zone'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Can Fly?</th>\
@@ -161,12 +162,12 @@
                 weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(18,138,244,0.3333333333333333)',
+                fillColor: 'rgba(18,138,244,0.32941176470588235)',
                 interactive: true,
             }
         }
         map.createPane('pane_AirportAuthorizationZones_2');
-        map.getPane('pane_AirportAuthorizationZones_2').style.zIndex = 402;
+        map.getPane('pane_AirportAuthorizationZones_2').style.zIndex = 102;
         map.getPane('pane_AirportAuthorizationZones_2').style['mix-blend-mode'] = 'normal';
         var layer_AirportAuthorizationZones_2 = new L.geoJson(json_AirportAuthorizationZones_2, {
             attribution: '',
@@ -185,13 +186,16 @@
                         <td colspan="2"><strong>Strato Drone Solutions</strong><br />' + (feature.properties['Strato Drone Solutions'] !== null ? autolinker.link(feature.properties['Strato Drone Solutions'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Geo Zone'] !== null ? autolinker.link(feature.properties['Geo Zone'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Geo Zone</th>\
+                        <td>' + (feature.properties['Geo Zone'] !== null ? autolinker.link(feature.properties['Geo Zone'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Access'] !== null ? autolinker.link(feature.properties['Access'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Access</th>\
+                        <td>' + (feature.properties['Access'] !== null ? autolinker.link(feature.properties['Access'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Price'] !== null ? autolinker.link(feature.properties['Price'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Price</th>\
+                        <td>' + (feature.properties['Price'] !== null ? autolinker.link(feature.properties['Price'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Can Fly?</th>\
@@ -212,12 +216,12 @@
                 weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(213,9,13,0.34509803921568627)',
+                fillColor: 'rgba(213,9,13,0.34901960784313724)',
                 interactive: true,
             }
         }
         map.createPane('pane_RestrictionZones_3');
-        map.getPane('pane_RestrictionZones_3').style.zIndex = 403;
+        map.getPane('pane_RestrictionZones_3').style.zIndex = 103;
         map.getPane('pane_RestrictionZones_3').style['mix-blend-mode'] = 'normal';
         var layer_RestrictionZones_3 = new L.geoJson(json_RestrictionZones_3, {
             attribution: '',
